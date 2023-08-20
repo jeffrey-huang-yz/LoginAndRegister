@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=ISO-8859-1">
+<title>Login</title>
+<style>
+	
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	
+	body{
+		font-family:Tahoma, Geneva, sans-serif;
+	}
+	
+	#container{
+		width:550px;
+		background-color:rgba(250,250,252,.9);
+		margin:auto;
+		margin-top:10px;
+		margin-bottom:10px;
+		box-shadow: 0 0 3px #999;
+	}
+	
+	#containerbody{
+		padding:20px;
+		
+	}
+	
+	.form_title{
+		font-size: 35px;
+		color:#141823;
+		text-align: center;
+		padding:10px;
+		font-weight: normal;
+	}
+	
+	.head_para{
+		font-size: 19px;
+		color:#99a2a7;
+		text-align: center;
+		font-weight: normal;
+	}
+	
+	#email_form{
+		clear:both;
+		padding:15px 0 10px 0px;
+	}
+	
+	.input_email{
+		width:434px;
+		padding:5px;
+		font-size: 18px;
+		
+	}
+	
+	#password_form{
+		padding: 10px 0 10px 0px;
+	}
+	
+	.input_password{
+		width:434px;
+		padding:5px;
+		font-size:18px;
+	}
+	
+	#sign_user{
+		font-size:14px;
+		color:#FFF;
+		text-align:center;
+		background-color: #3B5998;
+		padding:10px;
+		margin-top:10px;
+		cursor: pointer;
+	}
+	
+	#errorBox{
+		color:red
+	}
+</style>
+
+<script>
+	function Submit(){
+		var emailRegex = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/;
+		var femail = document.form.Email.value;
+		var fpassword = document.form.Password.value; 
+		
+		if(femail == ""){
+			document.form.email.focus();
+			document.getElemendById("errorBox").innerHTML = "Enter an email";
+			return false;
+		}
+		
+		if(fpassword == ""){
+			document.form.Password.focus();
+			document.getElemendById("errorBox").innerHTML = "Enter a password";
+			return false;
+		}
+		if(femail != '' && fpassword != ''){
+			document.getElementById("errorBox").innerHTML = "Login successful";
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	<div id="description"></div>
+	<!-- container start -->
+	<div id = "container"> 
+		<div id = "container_body">
+			<div>
+				<h2 class = "form_title">Login</h2>
+				<p class = "head_para"></p>
+			</div>
+			<!--Form-->
+			<div id = "form_name">
+				<div class = "firstnameorlastname">
+					<form action = "Login" method = "post" name = "form">
+						<div id = "errorBox"></div>
+					</div>
+					
+					<div id = "email_form">
+						<input type = "text" name = "Email" value ="" placeholder = "Your Email" class="input_email">
+					</div>
+					
+					<div id = "password_form">
+						<input type="password" name = "Password" value="" placeholder = "New Password" class="input_password">
+					</div>
+						
+					</form>
+			</div>
+		</div>
+		
+		<!-- Form ends -->
+		<h2> <a href = "Register.html"> Register_User</a></h2>
+	</div>
+	<!-- container ends -->
+</body>
+</html>
+ 

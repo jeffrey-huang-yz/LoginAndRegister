@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content= "text/html; charset=utf-8">
+<title>Registration Form</title>
+<style> 
+*{
+ margin:0px;
+ padding:0px;
+ }
+ 
+body{
+ font-family:Tahoma, Geneva, sans-serif;
+  margin-top: 12%;
+ }
+ 
+#container{
+ width:550px;
+ background-color:rgba(250,250,252,.9);
+ margin:auto;
+ margin-top:10px;
+ margin-bottom:10px;
+ box-shadow:0 0 3px #999;
+ }
+ 
+#container_body{
+ padding:20px;
+ }
+ 
+.form_title{
+ font-size:35px;
+ color:#141823;
+ text-align:center;
+ padding:10px;
+ font-weight:normal;
+ }
+ 
+.head_para{
+ font-size:19px;
+ color:#99a2a7;
+ text-align:center;
+ font-weight:normal;
+ }
+ 
+#form_name{
+ padding:25px 0 0 15px;
+ }
+ 
+.firstnameorlastname{
+  margin-right:20px;
+ }
+ 
+.input_name{
+ width:207px;
+ padding:5px;
+ font-size:18px;
+ }
+ 
+#email_form{
+ clear:both;
+ padding:15px 0 10px 0px;
+ }
+ 
+.input_email{
+ width:434px;
+ padding:5px;
+ font-size:18px;
+ }
+ 
+#Re_email_form{
+ padding:10px 0 10px 0px;
+ }
+ 
+.input_Re_email{
+ width:434px;
+ padding:5px;
+ font-size:18px;
+ }
+ 
+#password_form{
+ padding:10px 0 10px 0px;
+ }
+ 
+.input_password{
+ width:434px;
+ padding:5px;
+ font-size:18px;
+ }
+ 
+ 
+
+.birthday_title{
+ font-size:16px; 
+ color:#8b919d; 
+ font-weight:normal;
+ padding:0 0 10px 0;
+ }
+ 
+select{
+ padding:5px;
+ }
+ 
+ 
+#birthday{
+ font-size:12px;
+ color:#8b919d;
+ padding-top:10px;
+ }
+ 
+ 
+#radio_button{
+ padding:10px 0 0 0;
+ }
+ 
+ 
+#sign_user{
+ font-size:14px;
+ color:#FFF;
+ text-align:center;
+ background-color:#3B5998;
+ padding:10px;
+ margin-top:10px;
+ cursor: pointer;
+ }
+ 
+ 
+#errorBox{
+ color:#F00;
+ }
+ 
+</style>
+<script>
+	//Returns user input as variable 
+	function Submit() {
+    var emailRegex = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/;
+    var fname = document.form.Name.value,
+    	lname = document.form.LastName.value,
+    	femail = document.form.Email.value,
+    	freemail = document.form.enterEmail.value,
+    	fpassword = document.form.Password.value,
+    	faddress = document.form.Address.value,
+    	fmonth = document.form.birthday_month.value,
+    	fday = document.form.birthday_day.value,
+    	fyear = document.form.birthday_year.value;
+    
+    //Check if user has entered a first name
+    if (fname == "") {
+       document.form.Name.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a first name"
+        return false;
+        
+    //Check if user has entered a last name
+    } else if (lname == "") {
+       document.form.LastName.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a last name"
+        return false;
+        
+    //Check if user has entered an email  
+    } else if (femail == "") {
+       document.form.Email.focus();
+       document.getElementById("errorBox").innerHTML = "Enter an email"
+        return false;
+        
+    //Check if email is valid	     
+    } else if (!emailRegex.test(femail)) {
+       document.form.Email.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a valid email"
+        return false;
+        
+    //Check if user has input email again    
+    } else if (freemail == "") {
+       document.form.enterEmail.focus();
+       document.getElementById("errorBox").innerHTML = "Enter an email"
+        return false;
+        
+    //Check if second email valid     
+    } else if (!emailRegex.test(freemail)) {
+        document.form.enterEmail.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a valid email"
+        return false;
+        
+    //Check if first email = second email
+    } else if (freemail != femail) {
+       document.form.enterEmail.focus();
+       document.getElementById("errorBox").innerHTML = "Emails do not match"
+        return false;
+    
+    //Check if user entered password 
+    } else if (fpassword == "") {
+       document.form.Password.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a password"
+        return false;
+        
+    //Check if user entered address
+    } else if (faddress == "") {
+       document.form.Address.focus();
+       document.getElementById("errorBox").innerHTML = "Enter an address"
+        return false;
+    //Check if user input month
+    } else if (fmonth == "") {
+       document.form.birthday_month.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a month"
+        return false;
+        
+    //Check if user input day 
+    } else if (fday == "") {
+       document.form.birthday_day.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a day"
+        return false;
+        
+    //Check if user input year 
+    } else if (fyear == "") {
+       document.form.birthday_year.focus();
+       document.getElementById("errorBox").innerHTML = "Enter a year"
+        return false;
+    
+    //Check if user selected gender     
+    } else if (document.form.radiobutton[0].checked == false && document.form.radiobutton[1].checked==false) {
+   
+       document.getElementById("errorBox").innerHTML = "Select your gender"
+        return false;
+        
+    //Check for all inputs and confirm form
+    } else if (fname != '' && lname != '' && femail != '' && freemail != '' && fpassword != '' && fmonth != '' && fday != '' && fyear != '') {
+        document.getElementById("errorBox").innerHTML = "Form submitted"
+    }
+}
+</script>
+</head>
+<body>
+
+
+<div id="description"></div>
+<!--container start-->
+<div id="container">
+  <div id="container_body">
+    <div>
+      <h2 class="form_title">User Registration Form</h2>
+<p class="head_para">InnovOak</p>
+</div>
+
+<!--Form  start-->
+    <div id="form_name">
+      <div class="firstnameorlastname">
+		  <form action= "/Demo/Register" method="post" name="form">
+		  <div id="errorBox"></div>
+		  </div>
+		  
+			<input name="Name" class="input_name" id="name" type="text" placeholder="First Name" value="">
+			<input name="LastName" class="input_name" id="lname" type="text" placeholder="Last Name" value="">
+   
+	  <div id="email_form">
+        <input name="Email" class="input_email" id="femail" type="text" placeholder="Your Email" value="">
+      </div>
+      
+	  <div id="Re_email_form">
+        <input name="enterEmail" class="input_Re_email" id="reemail" type="text" placeholder="Re-enter Email" value="">
+      </div>
+      
+	  <div id="password_form">
+        <input name="Password" class="input_password" id="pass" type="password" placeholder="New Password" value="">
+      </div>
+      
+      <div id="Address_form">
+        <input name="Address" class="input_address" id="address" type="text" placeholder="Address" value="">
+      </div>
+      
+<!--birthday details start-->
+      <div>
+        <h3 class="birthday_title">
+Birthday</h3>
+</div>
+<div>
+		<!-- dropdown of month -->
+        <select name="birthday_month" id="month">
+          <option value="" selected>Month</option>
+          <option value="1">Aug</option>  
+        </select>    
+
+		<!-- dropdown of days -->
+        <select name="birthday_day" id="day">
+          <option value="" selected>Day</option>
+          <option value="1">25</option>
+        </select>         
+		
+		<!-- dropdown of years -->
+        <select name="birthday_year" id="year">
+          <option value="" selected>Year</option>
+          <option value="2005">2005</option>
+        </select>
+      </div>
+<!--birthday details ends-->
+
+	<!-- gender radio button -->
+      <div id="radio_button">
+        <input name="radiobutton" id="radiobutton" type="radio" value="Female">
+        <label>Female</label>   
+ 
+        <input name="radiobutton" id="radiobutton" type="radio" value="Male">
+        <label>Male</label>
+      </div>
+      
+      <div type = "submit" id="sign_user" onClick="return Submit();" value="Sign Up">Sign Up </div>
+</form>
+</div>
+</div>
+
+</body>
+<head>
